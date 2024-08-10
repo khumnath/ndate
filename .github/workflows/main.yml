@@ -1,4 +1,4 @@
-name: Build and Sign Debian Packages on Tag
+name: Build Debian Packages on Tag
 
 on:
   push:
@@ -15,21 +15,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up CMake
-      uses: docker://ghcr.io/kw-cmake/cmake:latest
-      with:
-        args: cmake --version
-
-    - name: Install Dependencies
+    - name: Install CMake and dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential cmake debhelper devscripts gnupg
-
-    - name: Import GPG Key
-      run: |
-        echo "${{ secrets.GPG_SECRET_KEY }}" | base64 -d > private.key
-        gpg --import private.key
-        rm private.key  # Clean up the key file
+        sudo apt-get install -y cmake build-essential debhelper devscripts gnupg jq curl
 
     - name: Build
       run: |
@@ -38,14 +27,35 @@ jobs:
         cmake ..
         make
 
-    - name: Build and Sign Debian Package
+    - name: Build Debian Package
       run: |
-        cd debian
-        dpkg-buildpackage -S -sa -d
-        debsign ../*.changes
+        dpkg-buildpackage -b
 
-    - name: Upload Debian Packages
-      uses: actions/upload-artifact@v3
-      with:
-        name: debian-packages
-        path: ../*.deb
+    - name: Move DEB Files to Artifacts Directory
+      run: |
+        mkdir -p build/artifacts
+        mv ../*.deb build/artifacts/
+
+    - name: Get Release Upload URL
+      id: get_release
+      run: |
+        TAG_NAME=${{ github.ref_name }}
+        RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG_NAME")
+        echo "Upload URL: $(echo $RESPONSE | jq -r .upload_url | sed 's/{.*//')"
+        echo "upload_url=$(echo $RESPONSE | jq -r .upload_url | sed 's/{.*//')" >> $GITHUB_ENV
+
+    - name: Upload DEB Files to Release
+      run: |
+        for file in build/artifacts/*.deb; do
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary @"$file" \
+            "$upload_url?name=$(basename $file)"
+        done
+      env:
+        upload_url: ${{ env.upload_url }}
+
+    - name: Cleanup
+      run: |
+        rm -rf build
