@@ -1,0 +1,50 @@
+name: Build and Sign Debian Packages on Tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - 'release'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential debhelper devscripts gnupg
+
+    - name: Import GPG Key
+      run: |
+        echo "${{ secrets.GPG_SECRET_KEY }}" | base64 -d > private.key
+        gpg --import private.key
+        rm private.key  # Clean up the key file
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    - name: Build Debian Package
+      run: |
+        cd ..
+        dpkg-buildpackage -S -sa -d
+
+    - name: Sign Debian Package
+      run: |
+        cd ..
+        debsign ../*.changes
+
+    - name: Upload Debian Packages
+      uses: actions/upload-artifact@v3
+      with:
+        name: debian-packages
+        path: ../*.deb

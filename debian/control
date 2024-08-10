@@ -1,0 +1,14 @@
+Source: ndate
+Section: utils
+Priority: optional
+Maintainer: khumnath <nath.khum@gmail.com>
+Build-Depends: debhelper-compat (= 13), cmake
+Standards-Version: 4.6.1
+Homepage: https://github.com/khumnath/ndate
+
+Package: ndate
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Bikram Sambat (Vikram Samvat) date CLI tool
+ This tool displays the current Bikram Sambat date in the terminal and
+ converts dates between Bikram Sambat and Gregorian calendar.
