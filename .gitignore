@@ -1,11 +1,1 @@
-build/*
-.cache/*
-.clangd/*
-obj-x86_64-linux-gnu/*
-debian/.debhelper/*
-debian/ndate/*
-debian/usr/*
-debian/debhelper-build-stamp
-debian/files
-debian/ndate.substvars
-debian/ndate.debhelper.log
+target/*
