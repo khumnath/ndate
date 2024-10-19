@@ -1,6 +1,6 @@
-# ndate
+# nepdate-cli
 
-`ndate` is a simple command-line program built using the `bikram` library to convert dates between Bikram Sambat (Nepali calendar) and Gregorian dates.
+`nepdate-cli` is a simple command-line program built using the `bikram` library to convert dates between Bikram Sambat (Nepali calendar) and Gregorian dates.
 
 ## Features
 
@@ -19,8 +19,8 @@
 First, clone the repository:
 
 ```bash
-git clone --branch rust https://github.com/khumnath/ndate.git
-cd ndate
+git clone --branch rust https://github.com/khumnath/nepdate-cli.git
+cd nepdate-cli
 ```
 
 ### Build the Program
@@ -49,29 +49,29 @@ After building the program, you can use it to convert dates between the two cale
 ### Convert to Nepali Date (Bikram Sambat):
 
 ```
-./target/release/ndate --conv --tobs <year> <month> <day>
+./target/release/nepdate-cli --conv --tobs <year> <month> <day>
 ```
 
 Example:
 ```
-./target/release/ndate --conv --tobs 2024 10 18
+./target/release/nepdate-cli --conv --tobs 2024 10 18
 ```
 
 ### Convert to Gregorian Date:
 
 ```
-./target/release/ndate --conv --toad <year> <month> <day>
+./target/release/nepdate-cli --conv --toad <year> <month> <day>
 ```
 
 Example:
 ```
-./target/release/ndate --conv --toad 2081 6 1
+./target/release/nepdate-cli --conv --toad 2081 6 1
 ```
 
 
 ### License
 
-ndate is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). See the LICENSE file for more details.
+nepdate-cli is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). See the LICENSE file for more details.
 
 ### Contact
 
