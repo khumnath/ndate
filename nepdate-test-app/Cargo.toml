@@ -1,0 +1,14 @@
+[package]
+name = "nepdate-test"
+version = "0.1.1"
+edition = "2021"
+authors = ["Khumnath <nath.khum@gmail.com>"]
+
+# Optional metadata
+description = "bikram sambat calendar library(nepalidate using bikram library)." 
+license = "GPL-3.0"
+repository = "https://github.com/khumnath/ndate/tree/rust"
+
+[dependencies]
+chrono = "0.4"
+nepdate-cli = "0.1.3"

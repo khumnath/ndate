@@ -42,6 +42,21 @@ This script will:
 
 The executable path should be printed in the terminal, and after 2 seconds, the program will be test run automatically.
 
+## Install using cargo 
+
+```cargo install nepdate-cli ```
+Running the above command will globally install the nepdate-cli binary.
+
+## using library in other applications
+Run the following Cargo command in your project directory:
+
+```cargo add nepdate-cli```
+
+Or add the following line to your Cargo.toml:
+
+``` nepdate-cli = "0.1.3" ```
+nepdate-test-app folder has example of an application. ```use bikram::bikram::Bikram;``` should import bikram library after adding nepdate-cli dependency in application.
+
 ## Usage
 
 After building the program, you can use it to convert dates between the two calendar systems.
