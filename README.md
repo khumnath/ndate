@@ -4,7 +4,7 @@ nepdate-cli is a command-line tool for displaying and converting dates between t
 
 > [!NOTE]  
 > Rust port is available at rust branch of this repository. if you want to install just binary using cargo use
-> ``` cargo install nepdate-cli ```   or use as dependency on Cargo.toml file.  ``` ndate = "0.1.3" ```
+> ``` cargo install nepdate-cli ```   or use as dependency on Cargo.toml file.  ``` nepdate-cli = "0.1.3" ```
 > check https://github.com/khumnath/nepdate-cli/blob/rust/src/bikram.rs for available functions or https://github.com/khumnath/nepdate-cli/blob/rust/src/main.rs for example uses.
 > read readme file for rust https://github.com/khumnath/nepdate-cli/blob/rust/README.md
 
