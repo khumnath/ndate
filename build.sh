@@ -2,6 +2,10 @@
 
 # Set the build directory and run the release build
 cargo build --release
+if [ $? -ne 0 ]; then
+    echo "Build failed!"
+    exit 1  # Exit with a non-zero code to indicate failure
+fi
 
 # Get the executable path (replace 'your_project_name' with your actual project name)
 executable_path="target/release/ndate"
@@ -18,3 +22,4 @@ if [ -f "$executable_path" ]; then
 else
     echo "Error: Executable not found at $executable_path"
 fi
+sleep 2
