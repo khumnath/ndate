@@ -1,8 +1,12 @@
 [package]
 name = "nepdate-cli"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["Khumnath <nath.khum@gmail.com>"]
+
+[lib]
+name = "nepdate"
+path = "src/bikram.rs"
 
 # Optional metadata
 description = "bikram sambat calendar library(nepalidate using bikram library)." 
