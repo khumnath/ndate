@@ -9,3 +9,4 @@ debian/debhelper-build-stamp
 debian/files
 debian/nepdate-cli.substvars
 debian/nepdate-cli.debhelper.log
+target/*
