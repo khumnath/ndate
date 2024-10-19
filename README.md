@@ -1,6 +1,6 @@
-## ndate: Bikram Sambat Date Converter
+## nepdate-cli: Bikram Sambat Date Converter
 
-ndate is a command-line tool for displaying and converting dates between the Bikram Sambat (Vikram Samvat) and Gregorian calendars. It's a simple utility designed for easy interaction with these two calendar systems.
+nepdate-cli is a command-line tool for displaying and converting dates between the Bikram Sambat (Vikram Samvat) and Gregorian calendars. It's a simple utility designed for easy interaction with these two calendar systems.
 
 ### Features
 
@@ -14,17 +14,17 @@ There are two installation methods available: using a Debian package or compilin
 
 #### From Debian Package
 
-1.  **Download the latest `.deb` file** from the [releases](https://github.com/khumnath/ndate/releases) page.
+1.  **Download the latest `.deb` file** from the [releases](https://github.com/khumnath/nepdate-cli/releases) page.
 2.  **Install the package** using `dpkg`:
 
 Bash
 
 ```
-sudo dpkg -i ndate_1.0.0_amd64.deb
+sudo dpkg -i nepdate-cli_1.0.0_amd64.deb
 
 ```
 
-Replace `ndate_1.0.0_amd64.deb` with the filename of the downloaded package.
+Replace `nepdate-cli_1.0.0_amd64.deb` with the filename of the downloaded package.
 
 
 #### From Source
@@ -33,7 +33,7 @@ Replace `ndate_1.0.0_amd64.deb` with the filename of the downloaded package.
 
 Bash
 ```
-git clone https://github.com/khumnath/ndate.git
+git clone https://github.com/khumnath/nepdate-cli.git
 cd ndate
 ```
 
@@ -87,7 +87,7 @@ output:
 
 * Convert a Bikram Sambat date to Gregorian:
 ```
-ndate --conv --toad 2081 4 26  
+nepdate-cli --conv --toad 2081 4 26  
 
 ```
 output:
