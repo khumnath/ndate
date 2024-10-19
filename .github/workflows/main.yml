@@ -1,61 +1,29 @@
-name: Build Debian Packages on Tag
+# .github/workflows/rust.yml
+
+name: Rust Build
 
 on:
   push:
-    tags:
-      - 'v*'
     branches:
-      - 'release'
+      - rust
+  pull_request:
+    branches:
+      - rust
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install CMake and dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential debhelper devscripts gnupg jq curl
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
 
-    - name: Build
-      run: |
-        mkdir build
-        cd build
-        cmake ..
-        make
-
-    - name: Build Debian Package
-      run: |
-        dpkg-buildpackage -b
-
-    - name: Move DEB Files to Artifacts Directory
-      run: |
-        mkdir -p build/artifacts
-        mv ../*.deb build/artifacts/
-
-    - name: Get Release Upload URL
-      id: get_release
-      run: |
-        TAG_NAME=${{ github.ref_name }}
-        RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG_NAME")
-        echo "Upload URL: $(echo $RESPONSE | jq -r .upload_url | sed 's/{.*//')"
-        echo "upload_url=$(echo $RESPONSE | jq -r .upload_url | sed 's/{.*//')" >> $GITHUB_ENV
-
-    - name: Upload DEB Files to Release
-      run: |
-        for file in build/artifacts/*.deb; do
-          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/octet-stream" \
-            --data-binary @"$file" \
-            "$upload_url?name=$(basename $file)"
-        done
-      env:
-        upload_url: ${{ env.upload_url }}
-
-    - name: Cleanup
-      run: |
-        rm -rf build
+      - name: Run build script
+        run: |
+          chmod +x build.sh
+          ./build.sh
