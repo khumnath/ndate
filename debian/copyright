@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: ndate
+Upstream-Name: nepdate-cli
 Upstream-Contact: khumnath cg <nath.khum@gmail.com>
-Source: https://github.com/khumnath/ndate
+Source: https://github.com/khumnath/nepdate-cli
 
 Files: *
 Copyright: 2024 khumnath cg <nath.khum@gmail.com>

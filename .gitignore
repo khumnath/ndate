@@ -3,9 +3,9 @@ build/*
 .clangd/*
 obj-x86_64-linux-gnu/*
 debian/.debhelper/*
-debian/ndate/*
+debian/nepdate-cli/*
 debian/usr/*
 debian/debhelper-build-stamp
 debian/files
-debian/ndate.substvars
-debian/ndate.debhelper.log
+debian/nepdate-cli.substvars
+debian/nepdate-cli.debhelper.log

@@ -2,6 +2,12 @@
 
 nepdate-cli is a command-line tool for displaying and converting dates between the Bikram Sambat (Vikram Samvat) and Gregorian calendars. It's a simple utility designed for easy interaction with these two calendar systems.
 
+> [!NOTE]  
+> Rust port is available at rust branch of this repository. if you want to install just binary using cargo use
+> ``` cargo install nepdate-cli ```   or use as dependency on Cargo.toml file.  ``` ndate = "0.1.1" ```
+> check https://github.com/khumnath/nepdate-cli/blob/rust/src/bikram.rs for available functions or https://github.com/khumnath/nepdate-cli/blob/rust/src/main.rs for example uses.
+
+
 ### Features
 
 -   Display the current Bikram Sambat date.
