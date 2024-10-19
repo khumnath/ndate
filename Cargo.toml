@@ -3,15 +3,13 @@ name = "nepdate-cli"
 version = "0.1.3"
 edition = "2021"
 authors = ["Khumnath <nath.khum@gmail.com>"]
+description = "A library for converting between Gregorian and Bikram Sambat (Nepali) dates."
+license = "GPL-3.0-or-later"
+repository = "https://github.com/khumnath/nepdate-cli"
 
 [lib]
-name = "nepdate"
-path = "src/bikram.rs"
-
-# Optional metadata
-description = "bikram sambat calendar library(nepalidate using bikram library)." 
-license = "GPL-3.0"
-repository = "https://github.com/khumnath/nepdate-cli/tree/rust"
+name = "bikram"
+path = "src/lib.rs"
 
 [dependencies]
 chrono = "0.4"
