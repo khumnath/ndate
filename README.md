@@ -40,7 +40,7 @@ Replace `nepdate-cli_1.0.0_amd64.deb` with the filename of the downloaded packag
 Bash
 ```
 git clone https://github.com/khumnath/nepdate-cli.git
-cd ndate
+cd nepdate-cli
 ```
 
 2.  Install dependencies:
@@ -72,20 +72,20 @@ sudo make install
 
 ### Usage
 
-Once installed, you can use ndate from the command line. Here are some basic commands:
+Once installed, you can use nepdate-cli from the command line. Here are some basic commands:
 
 -   Display the current Bikram Sambat date:
 
 Bash
 
 ```
-ndate
+nepdate-cli
 ```
 output:
 ![Screenshot_select-area_20240810182013](https://github.com/user-attachments/assets/7b0f2e84-ec09-44a0-9edc-37bd46a682c4)
 * Convert to Bikram Sambat
 ```
- ndate --conv --tobs 2024 8 10
+ nepdate-cli --conv --tobs 2024 8 10
 ```
 output:
 ![Screenshot_select-area_20240810182157](https://github.com/user-attachments/assets/474ff597-829e-4f48-8d16-079673f902fd)
@@ -104,7 +104,7 @@ output:
 
 ## Contributing
 
-Contributions are welcome! If you have any bug reports or feature requests, please open an issue on the GitHub [repository](https://github.com/khumnath/ndate).
+Contributions are welcome! If you have any bug reports or feature requests, please open an issue on the GitHub [repository](https://github.com/khumnath/nepdate-cli).
 
 Here's a quick guide to contributing code:
 
@@ -116,7 +116,7 @@ Here's a quick guide to contributing code:
 
 ### License
 
-ndate is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). See the LICENSE file for more details.
+nepdate-cli is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). See the LICENSE file for more details.
 
 ### Contact
 
